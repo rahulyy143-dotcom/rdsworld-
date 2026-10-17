@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RDS REELS - Premium ₹1</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{background:#000;color:#fff;overflow:hidden}
+.header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px 15px;background:linear-gradient(to bottom,rgba(0,0,0,0.8),transparent)}
+.logo{font-weight:900;font-size:20px}.logo span{color:#ff2a6d}
+.reels-container{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory}.reels-container::-webkit-scrollbar{display:none}
+.reel{height:100vh;width:100vw;position:relative;scroll-snap-align:start;display:flex;align-items:flex-end;background:#111}
+.reel img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+.reel-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,transparent 40%,rgba(0,0,0,0.3) 100%)}
+.reel-content{position:relative;z-index:10;padding:20px 15px;width:100%;display:flex;justify-content:space-between;align-items:flex-end}
+.reel-left{flex:1}.reel-left h3{font-size:16px;margin-bottom:6px}.reel-left p{font-size:13px;color:#ccc;margin-bottom:10px}
+.tag{background:rgba(255,255,255,0.15);padding:4px 10px;border-radius:20px;font-size:11px;margin-right:6px}
+.reel-right{display:flex;flex-direction:column;gap:18px;align-items:center}
+.icon-btn{width:48px;height:48px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#000;border-top:1px solid #222;display:flex;justify-content:space-around;padding:8px 0;z-index:100}
+.b-item{display:flex;flex-direction:column;align-items:center;font-size:10px;color:#888}.b-item.active{color:#fff}.b-item i{font-size:22px;font-style:normal}
+/* PAYWALL */
+.paywall{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.96);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}
+.pay-box{background:#111;border:2px solid #ff2a6d;border-radius:20px;padding:25px;max-width:380px;width:100%;text-align:center}
+.pay-box h2{color:#ff2a6d;font-size:26px} .pay-box h1{font-size:48px;margin:10px 0}.pay-box h1 span{font-size:16px;color:#888}
+.offer{background:linear-gradient(45deg,#ff2a6d,#ff8a00);padding:12px;border-radius:12px;margin:15px 0;font-weight:bold}
+.features{text-align:left;margin:15px 0;font-size:13px;line-height:1.8}
+.pay-btn{background:#ff2a6d;color:#fff;width:100%;padding:15px;border:none;border-radius:12px;font-size:18px;font-weight:bold;margin-top:15px;cursor:pointer}
+.small{font-size:11px;color:#888;margin-top:10px}
+</style>
+</head>
+<body>
+
+<!-- ₹1 PAYWALL -->
+<div id="paywall" class="paywall">
+<div class="pay-box">
+<h2>RDS REELS 👑</h2>
+<p style="color:#ccc">Premium Short Dramas</p>
+<h1>₹1 <span>/ Pehla Mahina</span></h1>
+<div class="offer">🔥 FIRST DEPOSIT ONLY 1₹ = 1 MONTH FREE</div>
+<div class="features">
+✅ 70,000+ Premium Dramas<br>
+✅ No Ads, HD Quality<br>
+✅ Daily New Episodes<br>
+✅ Agle mahine se sirf ₹299/month Auto-Pay<br>
+✅ Cancel Anytime
+</div>
+<button class="pay-btn" onclick="payNow(1)">🚀 1₹ Me Unlock Karo</button>
+<p class="small">UPI AutoPay Secure • UPI: 8984311392-3@ybl<br>Auto Renew: ₹299/month after 30 days</p>
+<button onclick="alreadyPaid()" style="background:none;border:none;color:#888;margin-top:12px;text-decoration:underline;font-size:13px">Already Paid? Click here to Unlock</button>
+</div>
+</div>
+
+<div class="header">
+<div class="logo">RDS <span>REELS</span></div>
+<div style="font-size:12px;background:#ff2a6d;padding:4px 10px;border-radius:20px">PREMIUM</div>
+</div>
+
+<div class="reels-container">
+<div class="reel">
+<img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=800&fit=crop">
+<div class="reel-overlay"></div>
+<div class="reel-content">
+<div class="reel-left">
+<h3>💔 Revenge of CEO's Wife - Ep1</h3>
+<p>3 saal baad wapas aayi hai badla lene! Dekho pura drama.</p>
+<span class="tag">Romance</span><span class="tag">Revenge</span><span class="tag">CEO</span>
+</div>
+<div class="reel-right">
+<div class="icon-btn">❤️<br>24K</div>
+<div class="icon-btn">💬<br>1K</div>
+<div class="icon-btn">↗️</div>
+</div>
+</div>
+</div>
+
+<div class="reel">
+<img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=800&fit=crop">
+<div class="reel-overlay"></div>
+<div class="reel-content">
+<div class="reel-left">
+<h3>👑 Village Girl to Billionaire</h3>
+<p>Gaon ki ladki bani 100cr ki malik! RDS Original</p>
+<span class="tag">Trending</span><span class="tag">Billionaire</span>
+</div>
+<div class="reel-right">
+<div class="icon-btn">❤️<br>58K</div>
+<div class="icon-btn">💬<br>3K</div>
+<div class="icon-btn">↗️</div>
+</div>
+</div>
+</div>
+
+<div class="reel">
+<img src="https://images.unsplash.com/photo-1516589177381-225d6d3d4d2c?w=400&h=800&fit=crop">
+<div class="reel-overlay"></div>
+<div class="reel-content">
+<div class="reel-left">
+<h3>🔥 My Husband's Secret</h3>
+<p>Shaadi ke baad dekha pati ka dusra chehra...</p>
+<span class="tag">K-Drama</span><span class="tag">Thriller</span>
+</div>
+<div class="reel-right">
+<div class="icon-btn">❤️<br>41K</div>
+<div class="icon-btn">💬<br>2K</div>
+<div class="icon-btn">↗️</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bottom-nav">
+<div class="b-item active"><i>🏠</i>For You</div>
+<div class="b-item"><i>🔥</i>Trending</div>
+<div class="b-item"><i>🎭</i>Dramas</div>
+<div class="b-item"><i>👤</i>Me</div>
+</div>
+
+<script>
+let UPI = "8984311392-3@ybl";
+function checkSub(){
+  let sub = localStorage.getItem('rds_sub');
+  if(sub){
+    let data = JSON.parse(sub);
+    if(Date.now() < data.expiry){
+      document.getElementById('paywall').style.display='none';
+      return true;
+    } else {
+      // 30 din khatam, ab 299 ka paywall
+      document.querySelector('.pay-box h1').innerHTML = '₹299 <span>/ Month</span>';
+      document.querySelector('.offer').innerHTML = '⚠️ Subscription Khatam - Renew Karo';
+      document.querySelector('.pay-btn').innerHTML = 'Pay ₹299 & Renew';
+      document.querySelector('.pay-btn').setAttribute('onclick','payNow(299)');
+    }
+  }
+  document.getElementById('paywall').style.display='flex';
+  return false;
+}
+function payNow(amt){
+  let upiLink = `upi://pay?pa=${UPI}&pn=RDS%20REELS&am=${amt}&cu=INR&tn=RDS%20Premium%20${amt}Rs`;
+  window.location.href = upiLink;
+  setTimeout(()=>{
+    if(confirm('Payment kiya? OK dabao, 30 din ka premium unlock ho jayega!')){
+      activateSub(amt);
+    }
+  },3000);
+}
+function activateSub(amt){
+  let expiry = Date.now() + (30*24*60*60*1000);
+  localStorage.setItem('rds_sub', JSON.stringify({amt:amt, expiry:expiry, next:299, date:new Date().toISOString()}));
+  alert('🎉 Premium Activated! 30 din ke liye unlocked! Agla payment ₹299, 30 din baad auto kat jayega.');
+  document.getElementById('paywall').style.display='none';
+}
+function alreadyPaid(){ activateSub(1); }
+checkSub();
+</script>
+</body>
+  </html>
