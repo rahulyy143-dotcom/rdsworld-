@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RDS REELS - 10 FREE</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+body{background:#000;color:#fff;overflow:hidden}
+.top{position:fixed;top:0;left:0;right:0;z-index:99;display:flex;justify-content:space-between;padding:12px;background:linear-gradient(#000,transparent)}
+.logo{font-weight:900;font-size:20px} .logo b{color:#ff2a6d}
+.badge{background:#ff2a6d;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:bold}
+.count{position:fixed;top:50px;left:50%;transform:translateX(-50%);z-index:99;background:#ff2a6d;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:bold}
+.container{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory}
+.container::-webkit-scrollbar{display:none}
+.reel{height:100vh;width:100vw;position:relative;scroll-snap-align:start;background:#111}
+.reel img{position:absolute;width:100%;height:100%;object-fit:cover}
+.shade{position:absolute;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,.9),transparent 50%)}
+.info{position:absolute;bottom:70px;left:12px;right:70px;z-index:10}
+.side{position:absolute;right:10px;bottom:90px;z-index:10;display:flex;flex-direction:column;gap:20px}
+.sbtn{width:46px;height:46px;background:rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:#000;border-top:1px solid #222;padding:8px 0;z-index:99}
+.nitem{font-size:10px;color:#666;text-align:center}.nitem.on{color:#fff}
+.pay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.98);z-index:999;display:none;align-items:center;justify-content:center;padding:18px}
+.box{background:#161616;border:2px solid #ff2a6d;border-radius:22px;padding:22px;width:100%;max-width:380px;text-align:center}
+.btn{width:100%;background:#ff2a6d;color:#fff;border:none;padding:15px;border-radius:12px;font-size:17px;font-weight:bold;margin-top:14px}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="logo">RDS <b>REELS</b></div><div id="adminTag" style="display:none;background:#00ff88;color:#000;padding:4px 10px;border-radius:20px;font-size:11px">ADMIN FREE</div><div class="badge" id="leftBadge">10 FREE LEFT</div></div>
+<div class="count" id="countBar">🎬 <span id="num">10</span> Free Reels Bache Hai</div>
+
+<div id="paywall" class="pay">
+<div class="box">
+<h2 style="color:#ff2a6d">🔒 Free Limit Khatam</h2>
+<p style="color:#aaa;margin:8px 0">Aapne 10 reels free dekh liye</p>
+<div style="font-size:38px;font-weight:900">₹1 <span style="font-size:14px;color:#888;font-weight:400">/ 1st Month</span></div>
+<div style="background:linear-gradient(90deg,#ff2a6d,#ff8a00);padding:8px;border-radius:10px;margin:10px 0;font-weight:bold;font-size:13px">Pay ₹1 Today = 30 Days FREE, Then ₹299/Month Auto</div>
+<div style="text-align:left;font-size:13px;line-height:1.8;color:#ccc">
+✅ 70,000+ Premium Dramas Unlocked<br>
+✅ No Ads, Full HD<br>
+✅ Next month ₹299 auto-pay<br>
+✅ Cancel anytime
+</div>
+<button class="btn" onclick="payUPI()">Pay ₹1 with UPI - Continue</button>
+<div style="font-size:11px;color:#555;margin-top:8px">UPI ID: 8984311392-3@ybl<br>Auto renewal: ₹299 after 30 days</div>
+<button onclick="unlock()" style="background:none;border:none;color:#666;text-decoration:underline;margin-top:10px;font-size:12px">Already Paid? Click to Unlock</button>
+</div>
+</div>
+
+<div class="container" id="main">
+<div class="reel"><img src="https://picsum.photos/seed/r1/400/800"><div class="shade"></div><div class="info"><h3>Ep1: CEO Ki Biwi Ka Badla 💔 FREE</h3><p>3 saal baad wapas aayi...</p></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+<div class="reel"><img src="https://picsum.photos/seed/r2/400/800"><div class="shade"></div><div class="info"><h3>Ep2: Gaon Se Billionaire 👑 FREE</h3><p>Gaon ki ladki bani crorepati</p></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+<div class="reel"><img src="https://picsum.photos/seed/r3/400/800"><div class="shade"></div><div class="info"><h3>Ep3: Pati Ka Secret 🔥 FREE</h3></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+<div class="reel"><img src="https://picsum.photos/seed/r4/400/800"><div class="shade"></div><div class="info"><h3>Ep4: Office Love 💼 FREE</h3></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+<div class="reel"><img src="https://picsum.photos/seed/r5/400/800"><div class="shade"></div><div class="info"><h3>Ep5: Dhokha 😭 FREE</h3></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+<div class="reel"><img src="https://picsum.photos/seed/r6/400/800"><div class="shade"></div><div class="info"><h3>Ep6: Second Chance 💫 FREE</h3></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+<div class="reel"><img src="https://picsum.photos/seed/r7/400/800"><div class="shade"></div><div class="info"><h3>Ep7: Ameer Pati 💰 FREE</h3></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+<div class="reel"><img src="https://picsum.photos/seed/r8/400/800"><div class="shade"></div><div class="info"><h3>Ep8: Cold CEO ❄️ FREE</h3></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+<div class="reel"><img src="https://picsum.photos/seed/r9/400/800"><div class="shade"></div><div class="info"><h3>Ep9: Badle Ki Shaadi 👰 FREE</h3></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+<div class="reel"><img src="https://picsum.photos/seed/r10/400/800"><div class="shade"></div><div class="info"><h3>Ep10: LAST FREE ⚠️</h3><p>Iske baad ₹1 lagega!</p></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+<div class="reel"><img src="https://picsum.photos/seed/r11/400/800"><div class="shade"></div><div class="info"><h3>Ep11: Premium 🔒 PAY ₹1</h3></div><div class="side"><div class="sbtn">❤️</div><div class="sbtn">↗️</div></div></div>
+</div>
+
+<div class="nav"><div class="nitem on">🏠<br>For You</div><div class="nitem">🔥<br>Trending</div><div class="nitem">🎭<br>Drama</div><div class="nitem" onclick="admin()">👤<br>Admin</div></div>
+
+<script>
+let UPI="8984311392-3@ybl";
+let watched=parseInt(localStorage.getItem('rds_w')||'0');
+let isAdmin=localStorage.getItem('rds_adm')=='1';
+let isPrem=false;
+function init(){
+ if(isAdmin){adminMode();return}
+ let s=localStorage.getItem('rds_sub'); if(s){let d=JSON.parse(s); if(Date.now()<d.exp){isPrem=true;premMode();return}}
+ update();
+ document.getElementById('main').addEventListener('scroll',()=>{
+  if(isAdmin||isPrem) return;
+  let cur=Math.round(document.getElementById('main').scrollTop/window.innerHeight)+1;
+  if(cur>watched){watched=cur;localStorage.setItem('rds_w',watched);update();}
+ });
+}
+function update(){
+ let left=10-watched; if(left<0) left=0;
+ document.getElementById('num').innerText=left;
+ document.getElementById('leftBadge').innerText=left+' FREE LEFT';
+ if(left<=0) showPay();
+ else if(left<=3){document.getElementById('countBar').innerText='⚠️ Sirf '+left+' free bache! Agla ₹1';document.getElementById('countBar').style.background='#ff8a00'}
+}
+function showPay(){document.getElementById('paywall').style.display='flex'}
+function payUPI(){
+ let link=`upi://pay?pa=${UPI}&pn=RDS%20REELS&am=1&cu=INR&tn=RDS Premium 1Rs`;
+ location.href=link;
+ setTimeout(()=>{if(confirm('Payment kiya? OK dabao to unlock hoga')) unlock()},2000);
+}
+function unlock(){
+ let exp=Date.now()+30*24*60*60*1000;
+ localStorage.setItem('rds_sub',JSON.stringify({exp:exp}));
+ alert('🎉 Premium Active! 30 din tak sab free!'); document.getElementById('paywall').style.display='none'; premMode();
+}
+function premMode(){document.getElementById('countBar').style.display='none';document.getElementById('leftBadge').innerText='PREMIUM';isPrem=true}
+function adminMode(){document.getElementById('adminTag').style.display='block';document.getElementById('countBar').style.display='none';document.getElementById('leftBadge').innerText='ADMIN FREE';isAdmin=true}
+function admin(){
+ let p=prompt('Admin Password:'); if(p=='RDS123'){localStorage.setItem('rds_adm','1');adminMode();alert('Admin Login - Aap hamesha FREE ho!')} else if(p) alert('Galat password - User ko pay karna padega')
+}
+init();
+</script>
+</body>
+  </html>
