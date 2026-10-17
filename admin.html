@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset=UTF-8><meta name=viewport content='width=device-width,initial-scale=1'><title>RDS ADMIN</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#0f0f0f;color:#fff;padding:15px}.card{background:#1e1e2f;margin:10px 0;padding:15px;border-radius:12px;border:1px solid #333}.btn{background:#e11d48;border:0;color:#fff;padding:10px 15px;border-radius:8px;font-weight:700;margin:2px}.btn-g{background:#16a34a}.input{width:100%;padding:12px;border-radius:8px;border:1px solid #444;background:#10101a;color:#fff;margin:6px 0}.header{background:#e11d48;padding:15px;border-radius:12px;margin-bottom:15px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #333;padding:8px;font-size:11px}th{background:#27273f}</style></head><body>
+<div id=loginBox><div class=header><b>RDS ADMIN LOGIN</b></div><div class=card><h3>Admin Login</h3><input id=au class=input placeholder='admin'><input id=ap class=input type=password placeholder='admin123'><button class=btn onclick="adminLogin()">LOGIN</button></div></div>
+<div id=adminBox style=display:none><div class=header><b>RDS WORLD ADMIN - UPI: 8984381392-3@ybl</b></div>
+<div style=display:flex;gap:8px><div class=card style=flex:1;text-align:center><small>Users</small><h2 id=tUsers>0</h2></div><div class=card style=flex:1;text-align:center><small>Deposit</small><h2 id=tDep>₹0</h2></div><div class=card style=flex:1;text-align:center><small>Withdraw Pending</small><h2 id=tWith>₹0</h2></div></div>
+<div class=card><h4>Deposit - 8984381392-3@ybl</h4><table><tr><th>User</th><th>Amount</th><th>Time</th></tr><tbody id=depList></tbody></table></div>
+<div class=card><h4>Withdrawal</h4><table><tr><th>User</th><th>UPI</th><th>Amount</th><th>Status</th></tr><tbody id=withList></tbody></table></div>
+<div class=card><h4>Users</h4><table><tr><th>Phone</th><th>Time</th></tr><tbody id=userList></tbody></table></div>
+<div class=card><button class=btn onclick="loadData()">Refresh</button> <button class=btn style=background:#333 onclick="clearAll()">Clear All</button></div>
+</div>
+<script>
+function adminLogin(){let u=document.getElementById('au').value;let p=document.getElementById('ap').value;if(u=='admin'&&p=='admin123'){document.getElementById('loginBox').style.display='none';document.getElementById('adminBox').style.display='block';loadData()}else alert('Use admin / admin123')}
+function loadData(){let users=JSON.parse(localStorage.getItem('rds_users')||'[]');let deps=JSON.parse(localStorage.getItem('rds_deposits')||'[]');let withs=JSON.parse(localStorage.getItem('rds_withs')||'[]');document.getElementById('tUsers').innerText=users.length;document.getElementById('tDep').innerText='₹'+deps.reduce((s,x)=>s+x.amount,0);document.getElementById('tWith').innerText='₹'+withs.filter(w=>w.status=='pending').reduce((s,x)=>s+x.amount,0);
+document.getElementById('depList').innerHTML=deps.map(d=>`<tr><td>${d.phone}</td><td>₹${d.amount}</td><td>${d.time}</td></tr>`).join('')||'<tr><td colspan=3>No data</td></tr>';
+document.getElementById('withList').innerHTML=withs.map(w=>`<tr><td>${w.phone}</td><td>${w.upi}</td><td>₹${w.amount}</td><td>${w.status}</td></tr>`).join('')||'<tr><td colspan=4>No data</td></tr>';
+document.getElementById('userList').innerHTML=users.map(u=>`<tr><td>${u.phone}</td><td>${u.time}</td></tr>`).join('')||'<tr><td colspan=2>No users</td></tr>';}
+function clearAll(){if(confirm('Delete all?')){localStorage.clear();loadData()}}
+</script></body></html>
