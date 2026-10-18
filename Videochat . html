@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RDS VIDEO CHAT</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+body{background:#000;color:#fff;height:100vh;overflow:hidden}
+.top{position:fixed;top:0;left:0;right:0;z-index:99;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(0,0,0,.8)}
+.logo{font-weight:900;font-size:22px} .logo span{color:#ff2a6d}
+.live{background:#ff2a6d;padding:5px 12px;border-radius:20px;font-size:12px;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
+.videos{height:100vh;display:flex;flex-direction:column}
+.vbox{flex:1;position:relative;background:#111;display:flex;align-items:center;justify-content:center}
+.vbox video{width:100%;height:100%;object-fit:cover}
+.label{position:absolute;top:60px;left:12px;background:rgba(0,0,0,.6);padding:4px 10px;border-radius:12px;font-size:12px}
+#remote{border-bottom:2px solid #ff2a6d}
+.controls{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:99;display:flex;gap:14px;align-items:center}
+.cbtn{width:56px;height:56px;border-radius:50%;border:none;font-size:22px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.next{background:#ff2a6d;color:#fff;width:78px;font-weight:bold;font-size:14px;border-radius:28px}
+.mic{background:#333;color:#fff}
+.end{background:#ff3b30;color:#fff}
+.chat{position:fixed;bottom:90px;left:10px;right:10px;z-index:98;background:rgba(0,0,0,.7);border-radius:14px;padding:8px;display:flex;gap:8px}
+.chat input{flex:1;background:#222;border:none;color:#fff;padding:10px 14px;border-radius:20px;outline:none}
+.chat button{background:#ff2a6d;border:none;color:#fff;padding:10px 16px;border-radius:20px;font-weight:bold}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="logo">RDS <span>VIDEO CHAT</span></div><div class="live">● LIVE</div></div>
+
+<div class="videos">
+<div class="vbox" id="remote">
+<video id="remoteVideo" autoplay playsinline></video>
+<div class="label">Stranger - Online</div>
+<div style="text-align:center;color:#666"><div style="font-size:50px">👤</div><p>Connecting...</p><p style="font-size:12px;margin-top:6px">Next dabao dusre se milne ke liye</p></div>
+</div>
+<div class="vbox">
+<video id="localVideo" autoplay muted playsinline></video>
+<div class="label">Aap</div>
+</div>
+</div>
+
+<div class="controls">
+<button class="cbtn mic" onclick="toggleMic()" id="micBtn">🎤</button>
+<button class="cbtn next" onclick="nextUser()">NEXT ➡️</button>
+<button class="cbtn end" onclick="endCall()">❌</button>
+</div>
+
+<div class="chat">
+<input id="msgInput" placeholder="Message likho...">
+<button onclick="sendMsg()">Send</button>
+</div>
+
+<script>
+// RDS VIDEO CHAT - Simple Version
+let localStream;
+async function startCamera(){
+ try{
+  localStream = await navigator.mediaDevices.getUserMedia({video:true,audio:true});
+  document.getElementById('localVideo').srcObject = localStream;
+  // Demo - remote me bhi local dikhega (real app me WebRTC server lagta hai)
+  document.getElementById('remoteVideo').srcObject = localStream;
+  document.querySelector('#remote div').style.display='none';
+ } catch(e){
+  alert('Camera permission do!');
+ }
+}
+function nextUser(){
+ document.querySelector('#remote div').innerHTML='<div style="font-size:50px">🔄</div><p>Next user search...</p>';
+ setTimeout(()=>{
+  document.querySelector('#remote div').style.display='none';
+  alert('RDS Video Chat: Next user mil gaya! (Full version me random log aayenge)');
+ },1000);
+}
+function toggleMic(){
+ let btn=document.getElementById('micBtn');
+ if(btn.innerText=='🎤'){localStream.getAudioTracks()[0].enabled=false;btn.innerText='🔇';btn.style.background='#ff3b30'}
+ else{localStream.getAudioTracks()[0].enabled=true;btn.innerText='🎤';btn.style.background='#333'}
+}
+function endCall(){if(confirm('Chat band kare?')) location.reload()}
+function sendMsg(){
+ let inp=document.getElementById('msgInput');
+ if(inp.value){alert('Message: '+inp.value+' (Real app me samne wale ko jayega)');inp.value=''}
+}
+startCamera();
+</script>
+</body>
+</html>
